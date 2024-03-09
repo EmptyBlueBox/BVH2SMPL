@@ -31,9 +31,9 @@ cd ./src
 
    note: you'll have to find out the time window the people is about to sit, and put the frame upper and lower range into the script.
 
-        ```shell
-        python preprocess.py
-        ```
+  ```shell
+  python preprocess.py
+  ```
 
 2. run the script to retarget the motion
 
@@ -45,9 +45,9 @@ cd ./src
 
    note: in this part you must have cuda.
 
-        ```shell
-        python rendering.py
-        ```
+  ```shell
+  python rendering.py
+  ```
 
 4. run the script to generate the video
 
