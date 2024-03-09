@@ -77,7 +77,7 @@ And you can also simply modify the `retargeting.py` file to fit another bvh hier
 
 Goto `./results-animation` folder to see more results.
 
-## Acknowledgement
+## Quotation
 
 Code of step 3 is mostly from [motion-diffusion-model](https://github.com/GuyTevet/motion-diffusion-model)
 
