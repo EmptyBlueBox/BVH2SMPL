@@ -1,4 +1,4 @@
-# Human Motion Retargeting
+# BVH2SMPL
 
 
 
