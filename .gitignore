@@ -3,3 +3,6 @@ retargeting.blend1
 README-original.md
 **/.DS_Store
 SMPL_sample_animations
+README-motion-difffusion.md
+.vscode
+**/*.pkl

@@ -9,10 +9,9 @@ import joblib
 import smplx
 import trimesh
 import h5py
-from tqdm import tqdm
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
-import src.smplify
+from smplify import SMPLify3D
 import config
 
 # parsing argmument
@@ -21,7 +20,7 @@ parser.add_argument('--batchSize', type=int, default=1,
                     help='input batch size')
 parser.add_argument('--num_smplify_iters', type=int, default=100,
                     help='num of smplify iters')
-parser.add_argument('--cuda', type=bool, default=False,
+parser.add_argument('--cuda', type=bool, default=True,
                     help='enables cuda')
 parser.add_argument('--gpu_ids', type=int, default=0,
                     help='choose gpu ids')
@@ -61,7 +60,7 @@ pred_cam_t = torch.zeros(opt.batchSize, 3).to(device)
 keypoints_3d = torch.zeros(opt.batchSize, opt.num_joints, 3).to(device)
 
 # # #-------------initialize SMPLify
-smplify = src.smplify.SMPLify3D(smplxmodel=smplmodel,
+smplify = SMPLify3D(smplxmodel=smplmodel,
                     batch_size=opt.batchSize,
                     joints_category=opt.joint_category,
 					num_iters=opt.num_smplify_iters,
@@ -71,7 +70,7 @@ smplify = src.smplify.SMPLify3D(smplxmodel=smplmodel,
     
 purename = os.path.splitext(opt.files)[0]
 # --- load data ---
-data = np.load(opt.data_folder + "/" + purename + ".npy")  # [nframes, njoints, 3]
+data = np.load(opt.data_folder + "/" + purename + ".npy")
 
 dir_save = os.path.join(opt.save_folder, purename)
 if not os.path.isdir(dir_save):
@@ -80,8 +79,8 @@ if not os.path.isdir(dir_save):
 # run the whole seqs
 num_seqs = data.shape[0]
 
-for idx in tqdm(range(num_seqs)):
-	#print(idx)
+for idx in range(num_seqs):
+	print(f"idx={idx}")
 
 	joints3d = data[idx] #*1.2 #scale problem [check first]	
 	keypoints_3d[0, :, :] = torch.Tensor(joints3d).to(device).float()
@@ -129,4 +128,11 @@ for idx in tqdm(range(num_seqs)):
 	param['beta'] = new_opt_betas.detach().cpu().numpy()
 	param['pose'] = new_opt_pose.detach().cpu().numpy()
 	param['cam'] = new_opt_cam_t.detach().cpu().numpy()
+	
+	# save the root position
+	# shape of keypoints_3d is torch.Size([1, 22, 3]) and root is the first one
+	root_position = keypoints_3d[0, 0, :].detach().cpu().numpy()
+	print(f"root at {root_position}, shape of keypoints_3d is {keypoints_3d.shape}")
+	param['root'] = root_position
+	
 	joblib.dump(param, dir_save + "/" + "%04d"%idx + ".pkl", compress=3)

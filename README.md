@@ -51,3 +51,9 @@ motion_tensor, opt_dict = self.j2s.joint2smpl(self.motions['motion'][self.absl_i
 ```
 
 这说明 `result[motion]` 共有四个维度，第一个维度是模型相关的 `batch_size` ，我们并不需要这个维度，只需要它的后三维即可，第一维是帧数，第二维是关节个数，第三维是关节的旋转角。但是仍需要处理的是关节顺序。
+
+Day 2
+
+我继续分析了 `visualize/vis_utils.py` 以获取关节顺序，但是在递归地查找了所有相关文件后只得到了关节个数为22这个信息。
+
+然后我暂时放弃了解决这个问题，转而完成 preprocessing 和 retargeting 的代码。
