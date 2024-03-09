@@ -5,9 +5,9 @@ from scipy.spatial.transform import Slerp
 
 
 '''
-注释里统一N表示帧数，M表示关节数
-position, rotation表示局部平移和旋转
-translation, orientation表示全局平移和旋转
+In the comments, N uniformly represents the number of frames, and M represents the number of joints. 
+"position, rotation" indicate local translation and rotation
+"translation, orientation" indicate global translation and rotation.
 '''
 
 

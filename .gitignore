@@ -1,8 +1,8 @@
-retargeting.blend
-retargeting.blend1
-README-original.md
 **/.DS_Store
-SMPL_sample_animations
-README-motion-difffusion.md
 .vscode
 **/*.pkl
+!src/rendering_utils/smpl/gmm_08.pkl
+**/__pycache__
+**/*.blend1
+**/*.blend
+**/*.obj

@@ -1,0 +1,15 @@
+argparse
+tqdm
+numpy==1.22
+scipy
+# functools
+typing
+torch
+trimesh
+# pickle
+# contextlib
+# smplx
+# shutil
+smplx==0.1.28
+h5py
+chumpy
