@@ -2,9 +2,6 @@
 Remove one spine joint from the preprocessed bvh file, add two hand joints, and change the order of the joints. 
 Save it as a .npy array with dimensions (1+24, 3), where 1 represents the offset of the root joint, 
 24 represents 24 joints, and 3 represents the x, y, z coordinates for each joint.
-
-将预处理好的bvh文件删除一个脊椎关节，添加两个手部关节，并且改变关节顺序，保存为 (1+24, 3) 的 .npy 数组，其中 1 表示根关节的offset，
-24 表示 24 个关节，3 表示每个关节的 x, y, z 三个坐标。
 '''
 import os
 import numpy as np
@@ -40,9 +37,6 @@ Pelvis(0)
 Mapping from src bvh skeletal structure to smpl skeletal structure, for example: in the smpl skeletal structure idx==3 is Spine1, 
 in the table below we find that idx==3 corresponds to 1, so in the src skeletal structure idx==1 is Spine1 (chest1). 
 Additionally, the last two numbers are duplicates, indicating that the src bvh skeleton lacks two hand nodes.
-
-从 src bvh 骨骼结构到 smpl 骨骼结构的映射，举例：smpl 骨骼结构中 idx==3 是 Spine1，在下表中查到 idx==3 为 1，那么在 src 骨骼结构中 idx==1 是 Spine1 (chest1)
-另外最后两个数是重复的，表示了 src bvh 骨骼缺少两个手节点
 '''
 idx_mapping=[0,23,18,1,24,19,2,25,20,3,26,21,5,13,8,6,14,9,15,10,16,11,16,11]
 

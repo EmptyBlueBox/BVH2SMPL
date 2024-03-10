@@ -14,13 +14,13 @@ def decompose_rotation_with_yaxis(rotation):
     the rotation around the axis in the xz plane, such that the original rotation `R` can be decomposed
     as `R = Ry * Rxz`.
     """
-    rot = R.from_quat(rotation)  # 将四元数转换为旋转量
-    rot_matrix = rot.as_matrix()  # 计算旋转矩阵
-    y_new = (rot_matrix@np.array([0, 1, 0])).T  # 计算y轴旋转后的方向
-    y_ori = np.array([0, 1, 0]).T  # y轴原方向
-    theta_y = np.arccos(np.dot(y_new, y_ori)/(np.linalg.norm(y_new)*np.linalg.norm(y_ori)))  # 计算y轴旋转角度
-    rot_axis_y = np.cross(y_new, y_ori) / np.linalg.norm(np.cross(y_new, y_ori))  # 计算y轴旋转轴
-    Ry = R.from_rotvec(theta_y*rot_axis_y)*rot  # 计算y轴旋转量
+    rot = R.from_quat(rotation)  # Convert quaternion to rotation amount
+    rot_matrix = rot.as_matrix()  # Calculate the rotation matrix
+    y_new = (rot_matrix@np.array([0, 1, 0])).T  # Calculate the direction after rotation around the y-axis.
+    y_ori = np.array([0, 1, 0]).T  # y-axis original direction
+    theta_y = np.arccos(np.dot(y_new, y_ori)/(np.linalg.norm(y_new)*np.linalg.norm(y_ori)))  # Calculate the y-axis rotation angle
+    rot_axis_y = np.cross(y_new, y_ori) / np.linalg.norm(np.cross(y_new, y_ori))  # Calculate the y-axis rotation axis
+    Ry = R.from_rotvec(theta_y*rot_axis_y)*rot  # Calculate the y-axis rotation amount
     return Ry
 
 cur_path= os.path.dirname(os.path.abspath(__file__))
