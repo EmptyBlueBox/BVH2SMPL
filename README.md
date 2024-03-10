@@ -25,29 +25,39 @@ Rename the neutral model into `SMPL_NEUTRAL.pkl` and put it into `./src/renderin
 cd ./src
 ```
 
+
+
 ### Run the script:
 
-1. put the bvh files into `./bvh` folder, then run script to preprocessing the files
+1. Put the bvh files into `./bvh` folder, then run script to preprocessing the files.
 
-   note: you'll have to find out the time window the people is about to sit, and put the frame upper and lower range into the script.
+   To get the trajectory ends at the origin, I calculate the Y rotation of the root point at the last frame, then cast the inverse Y-rotation to the root rotation and root translation of all frames.
+   
+   You'll have to find out the time window the people is about to sit (put the bvh into blender and find a proper frame), and put the frame upper and lower range into the script.
+   
+   ```shell
+   python preprocess.py
+   ```
+   
+   
 
-  ```shell
-  python preprocess.py
-  ```
-
-2. run the script to retarget the motion
+2. Run the script to retarget the motion
 
     ```shell
     python retargeting.py
     ```
 
-3. run the script to render the result
+    
+
+3. Run the script to render the result
 
    note: in this part you must have cuda.
-
-  ```shell
-  python rendering.py
-  ```
+   
+   ```shell
+   python rendering.py
+   ```
+   
+   
 
 4. run the script to generate the video
 
@@ -59,7 +69,7 @@ cd ./src
 
    <img src="./README.assets/CleanShot 2024-03-10 at 06.31.45@2x.png" alt="CleanShot 2024-03-10 at 06.31.45@2x" style="zoom:30%;" />
 
-   Then click `Render → Render Video` , wait for some time and you will get your video in the output folder.
+   Then click `Render → Render Animation` , wait for some time and you will get your video in the output folder.
 
    <img src="./README.assets/CleanShot 2024-03-10 at 06.33.57@2x.png" alt="CleanShot 2024-03-10 at 06.33.57@2x" style="zoom:30%;" />
 
