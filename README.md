@@ -1,6 +1,10 @@
 # BVH2SMPL
 
+## Update on May 24th, 2024
 
+After step 2, you can try to use [aitviewer](https://github.com/eth-ait/aitviewer) to render the video rather than using a lot of `.obj` files.
+
+There's a reference script on [Inter-X repo](https://github.com/liangxuy/Inter-X/blob/main/visualize/smplx_viewer_tool/data_viewer.py)
 
 ## Usage
 
@@ -56,8 +60,6 @@ cd ./src
    ```shell
    python rendering.py
    ```
-   
-   
 
 4. run the script to generate the video
 
