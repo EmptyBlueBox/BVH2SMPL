@@ -1,6 +1,12 @@
 # BVH2SMPL
 
-## Update on May 24th, 2024
+
+
+**Update on June 6th, 2024**
+
+After step 2, you can also try to use [smplpytorch](https://github.com/gulvarol/smplpytorch/) to generate `vertex` and `face` (which is `.obj` file) , then use `pyvista.wrap` to generate mesh, then use `pyvista.Plotter.add_mesh` to render.
+
+**Update on May 24th, 2024**
 
 After step 2, you can try to use [aitviewer](https://github.com/eth-ait/aitviewer) to render the video rather than using a lot of `.obj` files.
 
