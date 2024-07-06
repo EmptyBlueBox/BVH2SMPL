@@ -2,6 +2,12 @@
 
 
 
+**Update on July 6th, 2024**
+
+Now I recommend using [rerun](https://github.com/rerun-io/rerun/) to visualize the 3D SMPL/SMPL-X mesh.
+
+I provide a script `/src/rendering-rerun.py` as example, it inputs vertices and faces index, and using rerun to render the mesh. You can read this simple script and modify it for personal use.
+
 **Update on June 6th, 2024**
 
 After step 2, you can also try to use [smplpytorch](https://github.com/gulvarol/smplpytorch/) to generate `vertex` and `face` (which is `.obj` file) , then use `pyvista.wrap` to generate mesh, then use `pyvista.Plotter.add_mesh` to render.
